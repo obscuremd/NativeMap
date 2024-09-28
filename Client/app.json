@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "Map",
+    "slug": "Map",
+    "version": "1.0.0",
+    "scheme": "Map",
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    },
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.obscuremd.Map"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoib2JzY3VyZW1kIiwiYSI6ImNtMWxlYnkxMTBiaTQybHNldHN5dXRibnAifQ.nsL1O-ob_5sNm4zTC3-FIw",
+          "RNMapboxMapsVersion": "11.*"
+        }
+      ]
+    ]
+  }
+}
