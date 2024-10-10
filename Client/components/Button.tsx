@@ -1,24 +1,41 @@
 import { forwardRef } from 'react';
-import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 type ButtonProps = {
-  title: string;
+  title?: string;
 } & TouchableOpacityProps;
 
 export const Button = forwardRef<TouchableOpacity, ButtonProps>(
   ({ title, ...touchableProps }, ref) => {
     return (
-      <TouchableOpacity
-        ref={ref}
-        {...touchableProps}
-        className={`${styles.button} ${touchableProps.className}`}>
-        <Text className={styles.buttonText}>{title}</Text>
+      <TouchableOpacity ref={ref} {...touchableProps} style={[styles.button, touchableProps.style]}>
+        <Text style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>
     );
   }
 );
 
-const styles = {
-  button: 'items-center bg-indigo-500 rounded-[28px] shadow-md p-4',
-  buttonText: 'text-white text-lg font-semibold text-center',
-};
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#4AC2B3',
+    borderRadius: 10,
+    elevation: 5,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+});

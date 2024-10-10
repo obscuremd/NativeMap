@@ -1,14 +1,39 @@
 {
   "expo": {
-    "name": "Map",
-    "slug": "Map",
+    "name": "my-expo-app",
+    "slug": "my-expo-app",
     "version": "1.0.0",
-    "scheme": "Map",
+    "scheme": "my-expo-app",
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "expo-router",
+      // ----------------------------------------------------------------
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoib2JzY3VyZW1kIiwiYSI6ImNtMXl0Y3g4bzAwM2MyanF2bjFxd2ExMDAifQ.6hfkV4GSm3rrx6YSMUE9WA",
+          "RNMapboxMapsVersion": "11.0.0"
+        }
+      ],
+      // -----------------------------------------------------------------
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Show current location on map."
+        }
+      ],
+      // ------------------------------------------------------------------
+      [
+        "expo-dev-launcher",
+        {
+          "launchMode": "most-recent"
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
@@ -32,17 +57,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.obscuremd.Map"
+      "package": "com.obscuremd.myexpoapp"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "@rnmapbox/maps",
-        {
-          "RNMapboxMapsDownloadToken": "sk.eyJ1Ijoib2JzY3VyZW1kIiwiYSI6ImNtMWxlYnkxMTBiaTQybHNldHN5dXRibnAifQ.nsL1O-ob_5sNm4zTC3-FIw",
-          "RNMapboxMapsVersion": "11.*"
-        }
-      ]
-    ]
+    "extra": {
+      "eas": {
+        "projectId": "ef55850d-004a-4759-8516-0ab513f2e536"
+      }
+    }
   }
 }

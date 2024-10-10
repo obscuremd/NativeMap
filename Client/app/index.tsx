@@ -1,15 +1,16 @@
-import { Stack, Link } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
+import React from 'react';
 
-import { Button } from '~/components/Button';
-import { Container } from '~/components/Container';
-import { Map } from '~/components/Map';
-import { ScreenContent } from '~/components/ScreenContent';
+import Map from '~/components/Map';
+import SelectedScooterSheet from '~/components/SelectedScooterSheet';
 
 export default function Home() {
-  return (
-    <>
-      <Stack.Screen options={{ title: 'Home' }} />
-      <Map/>
-    </>
-  );
+  return <Redirect href={'/auth'}/>
+  // return (
+  //   <>
+  //     <Stack.Screen options={{ title: 'Home', headerShown: false }} />
+  //     <Map />
+  //     <SelectedScooterSheet/>
+  //   </>
+  // );
 }
