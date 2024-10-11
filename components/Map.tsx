@@ -6,16 +6,16 @@ import { StyleSheet} from 'react-native';
 
 import { useScooter } from '~/Providers/ScooterProvider';
 import pin from '~/assets/pin.png'
-import scooters from '~/data/scooters.json'
+// import scooters from '~/data/scooters.json'
 
 Mapbox.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_KEY || '');
 
 const Map = () => {
 
-    const {setSelectedScooter, directionCoordinate, duration} = useScooter()
+    const {setSelectedScooter, directionCoordinate, nearbyScooters} = useScooter()
     // console.log('time:', duration)
 
-    const points = scooters.map((scooter)=> point([scooter.long, scooter.lat],{scooter}))
+    const points = nearbyScooters.map((scooter)=> point([scooter.long, scooter.lat],{scooter}))
     const scooterFeatures = featureCollection(points)
 
     const onPointPress = async(event: OnPressEvent) =>{

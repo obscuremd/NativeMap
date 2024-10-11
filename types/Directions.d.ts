@@ -13,7 +13,7 @@ interface RouteGeometry {
   }
 
   interface Scooter {
-    id: string;
+    id: number;
     long: number;
     lat: number;
     // Add any other properties related to the scooter here

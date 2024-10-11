@@ -8,9 +8,11 @@ import { Image, Text, View } from 'react-native';
 import { Button } from './Button';
 
 import { useScooter } from '~/Providers/ScooterProvider';
+import { useRide } from '~/Providers/RIdeProvider';
 
 const SelectedScooterSheet = () => {
-  const { selectedScooter, duration, distance } = useScooter();
+  const { selectedScooter, duration, distance} = useScooter();
+  const {  startJourney } = useRide();
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const SelectedScooterSheet = () => {
         </View>
         {/* bottom */}
         <View>
-            <Button title='Start Journey'/>
+            <Button title='Start Journey' onPress={(()=>{selectedScooter && startJourney(selectedScooter.id )})}/>
         </View>
       </BottomSheetView>
     </BottomSheet>
