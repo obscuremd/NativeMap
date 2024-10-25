@@ -16,13 +16,12 @@ interface nearbyScooterProps {
 }
 interface ScooterContextType {
   selectedScooter: Scooter | null;
-  setSelectedScooter: (scooter: Scooter) => void;
+  setSelectedScooter: (scooter: Scooter | null) => void;
   direction: DirectionsResponse | null;
   directionCoordinate: [number, number][] | undefined;
   duration: number | undefined;
   distance: number | undefined;
   nearbyScooters: nearbyScooterProps[];
-  
 }
 
 const ScooterContext = createContext<ScooterContextType | undefined>(undefined);
@@ -61,16 +60,18 @@ const ScooterProvider = ({ children }: PropsWithChildren) => {
           [myLocation.coords.longitude, myLocation.coords.latitude],
           [selectedScooter.long, selectedScooter.lat]
         );
-        // console.log('New Direction:', newDirection);
+        // console.log('New Direction:', selectedScooter);
         setDirection(newDirection);
       }
     };
 
     if (selectedScooter) {
       fetchDirections();
+    }else{
+      setDirection(null)
     }
   }, [selectedScooter]);
-  //   console.log('selectedScooter', direction)
+    
 
   return (
     <ScooterContext.Provider

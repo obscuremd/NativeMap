@@ -9,11 +9,11 @@ export async function getDirections(from:Array<number>, to:Array<number>) {
   return json;
 }
 
-// export async function fetchDirectionBasedOnCoords(coordinates) {
-//   const coordinatesString = coordinates.map((coord) => `${coord[0]},${coord[1]}`).join(';');
-//   const response = await fetch(
-//     `${BASE_URL}/matching/v5/mapbox/cycling/${coordinatesString}?annotations=distance%2Cduration&geometries=geojson&overview=full&steps=false&access_token=${mapBoxKey}`
-//   );
-//   const json = await response.json();
-//   return json;
-// }
+export async function fetchDirectionBasedOnCoords(coordinates:[number, number][]) {
+  const coordinatesString = coordinates.map((coord) => `${coord[0]},${coord[1]}`).join(';');
+  const response = await fetch(
+    `${BASE_URL}/matching/v5/mapbox/cycling/${coordinatesString}?annotations=distance%2Cduration&geometries=geojson&overview=full&steps=false&access_token=${mapBoxKey}`
+  );
+  const json = await response.json();
+  return json;
+}

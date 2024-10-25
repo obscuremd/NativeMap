@@ -8,13 +8,15 @@ import { Button } from './Button';
 import { useRide } from '~/Providers/RIdeProvider';
 
 const ActiveRideSheet = () => {
-  const { startJourney, ride } = useRide();
+  const { finishJourney, ride } = useRide();
 
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   useEffect(() => {
     if (ride) {
       bottomSheetRef?.current?.expand();
+    }else{
+        bottomSheetRef?.current?.close();
     }
   }, [ride]);
 
@@ -27,11 +29,8 @@ const ActiveRideSheet = () => {
       backgroundStyle={{ backgroundColor: '#414442' }}>
       {ride && (
         <BottomSheetView style={{ flex: 1, padding: 10, gap: 20 }}>
-          <View />
-
-          <View>
-            <Button title="FInish Journey" />
-          </View>
+            <Text style={{color:'white', fontSize:20, fontWeight:'600'}}>Ride Started</Text>
+            <Button title="FInish Journey" onPress={finishJourney} />
         </BottomSheetView>
       )}
     </BottomSheet>

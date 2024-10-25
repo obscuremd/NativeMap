@@ -11,7 +11,7 @@ import { useScooter } from '~/Providers/ScooterProvider';
 import { useRide } from '~/Providers/RIdeProvider';
 
 const SelectedScooterSheet = () => {
-  const { selectedScooter, duration, distance} = useScooter();
+  const { selectedScooter, setSelectedScooter, duration, distance} = useScooter();
   const {  startJourney } = useRide();
   const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -52,7 +52,9 @@ const SelectedScooterSheet = () => {
         </View>
         {/* bottom */}
         <View>
-            <Button title='Start Journey' onPress={(()=>{selectedScooter && startJourney(selectedScooter.id )})}/>
+            <Button 
+              title='Start Journey' 
+              onPress={(()=>selectedScooter &&[ startJourney(selectedScooter.id ),setSelectedScooter(null)])}/>
         </View>
       </BottomSheetView>
     </BottomSheet>
